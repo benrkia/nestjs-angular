@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">My twitter</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/newest-tweets" routerLinkActive="active">Newest tweets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/top-liked" routerLinkActive="active">Top liked</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mr-left">
+          <li *ngIf="!loggedIn()" class="nav-item">
+            <a class="nav-link" style="cursor:pointer;" (click)="openRegister()">Sign up</a>
+          </li>
+          <li *ngIf="!loggedIn()" class="nav-item">
+            <a class="nav-link" style="cursor:pointer;" (click)="openLogin()">Sign in</a>
+          </li>
+          <li *ngIf="loggedIn()" class="nav-item">
+            <a class="nav-link" style="cursor:pointer;" (click)="logOut()">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

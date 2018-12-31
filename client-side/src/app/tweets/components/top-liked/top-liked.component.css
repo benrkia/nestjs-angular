@@ -1,0 +1,66 @@
+.media {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e6ecf0;
+    padding: 10px;
+}
+.media-left {
+    margin-right: 10px;
+}
+.media-object {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.media-body > a {
+    color: #34495e;
+}
+
+.media-body .media-heading {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.media-body .media-heading:hover {
+    color: #3498db;
+}
+
+.media-body > span {
+    font-size: 12px;
+    padding: 5px;
+}
+
+.tweet-body > p {
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-bottom: 0px;
+}
+
+.action {
+    cursor: pointer;
+}
+
+.action > span {
+    padding: 2px;
+}
+
+.like:hover {
+    color: #e74c3c;
+}
+
+.retweet:hover {
+    color: #3498db;
+}
+
+.comment:hover {
+    color: #16a085;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.liked {
+    color: #e74c3c;
+}

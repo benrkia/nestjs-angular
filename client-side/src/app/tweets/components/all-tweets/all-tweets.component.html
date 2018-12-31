@@ -1,0 +1,44 @@
+<ul class="media-list">
+  <div class="media" *ngIf="loggedIn()">
+    <div class="media-body">
+      <ckeditor [editor]="Editor" (change)="onChange($event)"></ckeditor>
+      <button class="btn btn-primary float-right mt-1" (click)="addTweet()" [disabled]="data.length === 0">add tweet</button>
+    </div>
+  </div>
+
+  <div class="media" *ngFor="let tweet of tweets">
+    <div class="media-left media-top">
+      <a href="/users/{{tweet.user.id}}">
+        <img class="media-object" src="{{tweet.user.avatar}}" alt="{{tweet.user.firstName}} {{tweet.user.lastName}}" />
+      </a>
+    </div>
+    <div class="media-body">
+      <a [routerLink]="['/users', tweet.user.id]">
+        <h5 class="media-heading">{{tweet.user.firstName}} {{tweet.user.lastName}}</h5>
+      </a>
+      <span>{{tweet.creationDate | date:'mediumDate'}}</span>
+      <div class="tweet-body">
+          <!-- <p>{{tweet.content}}</p> -->
+          <p [innerHtml]="tweet.content"></p>
+          <blockquote class="blockquote text-right">
+            <footer class="blockquote-footer"><cite title="{{tweet.title}}">{{tweet.title}}</cite></footer>
+          </blockquote>
+          
+          <div class="row">
+            <div class="col-2 like action">
+              <a (click)="presslike(tweet)"><i [ngClass]="{ 'bold liked': isLiked(tweet) }" class="far fa-heart"></i></a>
+              <span *ngIf="tweet.likes.length !== 0" [ngClass]="{ 'liked': isLiked(tweet) }">{{tweet.likes.length}}</span>
+            </div>
+            <div class="col-2 retweet action">
+              <span><i class="fas fa-retweet"></i></span>
+              <span>20'</span>
+            </div>
+            <div class="col-2 comment action">
+              <span><i class="far fa-comment"></i></span>
+              <span>20'</span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</ul>

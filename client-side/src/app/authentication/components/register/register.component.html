@@ -1,0 +1,76 @@
+<form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <span class="login-form-title">
+      Member Registration
+    </span>
+  
+    <div class="wrap-input">
+      <input class="input" type="text" placeholder="First name" formControlName="firstName" [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
+      <span class="focus-input"></span>
+      <span class="symbol-input">
+        <i class="fa fa-user" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div *ngIf="f.firstName.touched && f.firstName.errors">
+        <span *ngIf="f.firstName.errors.required" class="invalid-feedback">First name is required</span>
+        <span *ngIf="f.firstName.errors.minlength" class="invalid-feedback">First name must be at least 3 characters</span>
+    </div>
+    
+    <div class="wrap-input">
+      <input class="input" type="text" placeholder="Last name" formControlName="lastName" [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
+      <span class="focus-input"></span>
+      <span class="symbol-input">
+        <i class="fa fa-user" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div *ngIf="f.lastName.touched && f.lastName.errors">
+        <span *ngIf="f.lastName.errors.required" class="invalid-feedback">Last name is required</span>
+        <span *ngIf="f.lastName.errors.minlength" class="invalid-feedback">Last name must be at least 3 characters</span>
+    </div>
+    
+    <div class="wrap-input">
+      <input class="input" type="text" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': (f.email.touched && f.email.errors) }">
+      <span class="focus-input"></span>
+      <span class="symbol-input">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div *ngIf="f.email.touched && f.email.errors">
+        <span *ngIf="f.email.errors.required" class="invalid-feedback">Email is required</span>
+        <span *ngIf="f.email.errors.email" class="invalid-feedback">This must be a valid email</span>
+    </div>
+    <div *ngIf="emailExists">
+        <span *ngIf="emailExists" class="invalid-feedback">this email already exists</span>
+    </div>
+  
+    <div class="wrap-input">
+      <input class="input" type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
+      <span class="focus-input"></span>
+      <span class="symbol-input">
+        <i class="fa fa-lock" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div *ngIf="f.password.touched && f.password.errors">
+        <span *ngIf="f.password.errors.required" class="invalid-feedback">Password is required</span>
+        <span *ngIf="f.password.errors.minlength" class="invalid-feedback">Password must be at least 8 characters</span>
+    </div>
+
+
+    <div class="wrap-input">
+      <input class="input" type="password" placeholder="Password confirmation" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': f.confirmPassword.touched && f.confirmPassword.errors }">
+      <span class="focus-input"></span>
+      <span class="symbol-input">
+        <i class="fa fa-lock" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div *ngIf="f.confirmPassword.touched && f.confirmPassword.errors">
+        <span *ngIf="f.confirmPassword.errors.required" class="invalid-feedback">Password confirmation is required</span>
+        <span *ngIf="f.confirmPassword.errors.minlength" class="invalid-feedback">Password confirmation must be at least 8 characters</span>
+        <span *ngIf="f.confirmPassword.errors.MatchPassword" class="invalid-feedback">Invalid password confirmation</span>
+    </div>
+    
+    <div class="container-login-form-btn">
+      <button class="login-form-btn" [disabled]="registerForm.invalid">
+        Register
+      </button>
+    </div>
+  </form>

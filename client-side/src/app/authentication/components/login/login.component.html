@@ -1,0 +1,38 @@
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <span class="login-form-title">
+    Member Login
+  </span>
+
+  <div class="wrap-input">
+    <input class="input" type="text" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': (f.email.touched && f.email.errors) }">
+    <span class="focus-input"></span>
+    <span class="symbol-input">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+    </span>
+  </div>
+  <div *ngIf="f.email.touched && f.email.errors">
+      <span *ngIf="f.email.errors.required" class="invalid-feedback">Email is required</span>
+      <span *ngIf="f.email.errors.email" class="invalid-feedback">This must be an email</span>
+  </div>
+
+  <div class="wrap-input">
+    <input class="input" type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': (f.password.touched && f.password.errors) }">
+    <span class="focus-input"></span>
+    <span class="symbol-input">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+    </span>
+  </div>
+  <div *ngIf="f.password.touched && f.password.errors">
+      <span *ngIf="f.password.errors.required" class="invalid-feedback">Password is required</span>
+      <span *ngIf="f.password.errors.minlength" class="invalid-feedback">Password must be at least 8 characters</span>
+  </div>
+  <div *ngIf="wrongInfo">
+      <span class="invalid-feedback">Wrong email/password</span>
+  </div>
+
+  <div class="container-login-form-btn">
+      <button class="login-form-btn" [disabled]="loginForm.invalid">
+        Login
+      </button>
+  </div>
+</form>
